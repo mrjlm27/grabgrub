@@ -1,0 +1,53 @@
+{% extends 'Kiosk/home.html' %}
+{% load static %}
+
+
+    {% block content %}            
+    <form action="{% url 'orderform' %}" method='post' autocomplete="off">
+            <div class="jumbotron">
+                <h1 class="display-4">Order Entry / Update</h1>
+                <p class="lead">Add / Update an Order.</p>
+                <hr class="my-4">
+                <p>Please complete the form below.</p>
+                    <input type="hidden" name="csrfmiddlewaretoken" value="r1xprejYguEsWCj4LCoIEBhaUUmbUmQYNoR6NhmSrRRoYHsvLu87bNok1skABXMG">
+    
+                    <input type="hidden" name="csrfmiddlewaretoken" value="aaNHo1ie68VPFeJJGet4UFBGJ2p5Qagcwx7oK4l8hv8LHjSaG6dtrRIQQAnuxLcU">
+                    
+                
+
+            <div id="div_id_cust_order" class="form-group"> <label for="id_cust_order" class=" requiredField">
+                        Customer Name<span class="asteriskField">*</span> </label> <div class=""> <select name="CustomerName" class="select form-control" required="" id="CustomerName"> <option value="" selected="">---------</option> 
+                            {% for c in c %}
+                            <option value="{{c.pk}}">{{c.name}}</option> 
+                            {% endfor %}
+                        </select> 
+                                
+        
+            <div id="div_id_food" class="form-group"> <label for="food" class=" requiredField">
+                        Food<span class="asteriskField">*</span> </label> <div class=""> <select name="food" class="select form-control" required="" id="food"> <option value="" selected="">---------</option> 
+                            {% for f in f %}
+                            <option value="{{f.pk}}">{{f.name}}</option>
+                            {% endfor %}        
+
+            </select> </div> </div> <div id="div_id_quantity" class="form-group"> <label for="quantity" class=" requiredField">
+                        Quantity<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="quantity" step="any" class="numberinput form-control" required="" id="quantity"> </div> </div>
+
+            
+            <input type='radio' id='PaymentType' name='PaymentType' value='Cash'>
+            <label for='Cash'>Cash</label>
+
+            <input type='radio' id='PaymentType' name='PaymentType' value='Card'>
+            <label for='Card'>Card</label>
+
+
+                <button type="submit" class="btn btn-secondary btn-lg btn-block">Add / Edit Order</button>
+                <br>
+                <br>
+                <a href="/grabgrub"><button type="button" class="btn btn-secondary btn-lg btn-block">Back To Main</button></a>
+            </div>
+            {% csrf_token %}
+    </form>
+                
+             
+    {% endblock %}
+

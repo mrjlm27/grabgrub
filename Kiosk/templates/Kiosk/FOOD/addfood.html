@@ -1,0 +1,47 @@
+{% extends 'Kiosk/home.html' %}
+{% load static %}
+
+    {% block content %}            
+       
+    <form action='' method='post' autocomplete="off">
+        <div class="jumbotron">
+            <h1 class="display-4">Food Entry / Update</h1>
+            <p class="lead">Add / Update a Food Item.</p>
+            <hr class="my-4">
+            <p>Please complete the form below.</p>
+                <input type="hidden" name="csrfmiddlewaretoken" value="r1xprejYguEsWCj4LCoIEBhaUUmbUmQYNoR6NhmSrRRoYHsvLu87bNok1skABXMG">
+            
+            <div id="div_id_name" class="form-group"> 
+                <label for="id_name" class=" requiredField">
+                    Name<span class="asteriskField">*</span> 
+                </label> 
+                <div class=""> 
+                    <input type="text" name="name" maxlength="300" class="textinput textInput form-control" required="" id="id_name">
+                </div> 
+            </div> 
+            <div id="div_id_description" class="form-group"> 
+                <label for="id_description" class=" requiredField">
+                    Description<span class="asteriskField">*</span> 
+                </label> 
+                <div class=""> 
+                    <input type="text" name="description" maxlength="300" class="textinput textInput form-control" required="" id="id_description"> 
+                </div> 
+            </div> 
+            <div id="div_id_price" class="form-group"> 
+                <label for="id_price" class=" requiredField">
+                    Price<span class="asteriskField">*</span> 
+                </label> 
+                <div class="">
+                    <input type="number" name="price" step="any" class="numberinput form-control" required="" id="id_price"> 
+                </div> 
+            </div>
+
+                <button type='submit' class="btn btn-secondary btn-lg btn-block">Add / Edit Food</button>
+                <br>
+                <br>
+                <a href="{% url 'homepage' %}"><button type="button" class="btn btn-secondary btn-lg btn-block">Back To Main</button></a>
+        </div>
+        {% csrf_token %}
+    </form>
+    {% endblock %}
+

@@ -1,0 +1,57 @@
+{% extends 'Kiosk/home.html' %}
+{% load static %}
+
+
+    {% block content %}
+    <title>Grab Grub!</title>
+    <br>
+    <br>
+    <h2 class="text-center">View All Customers</h2>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-12">
+
+                <table class="table table-striped">
+                    <thead>
+                        <th scope="col"> Name </th>
+                        <th scope="col"> Address </th>
+                        <th scope="col"> City </th>
+                        <th scope="col"> Actions </th>
+                        <th>     </th>
+                    </thead>
+                    <tbody>
+                        {% for c in customers %}
+                        <tr>
+                            <td> {{ c.name }} </td>
+                            <td> {{ c.address }} </td>
+                            <td> {{ c.city }} </td>
+                            <td> <a href="{% url 'customerupdate' c.id %}"> Edit </a></td>
+                            <td> <a href="{% url 'customerorder' pk=c.id %}"> View All Orders </a></td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+    <div class='container'>
+        <div class='row'>
+            <div class="col-lg-6 offset-lg-3"> 
+                <a href="{% url 'customerform' %}"><button id="singlebutton" name="singlebutton" class="btn btn-secondary btn-md btn-block">Add Customer</button></a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class='container'>
+        <div class='row'>
+            <div class="col-lg-6 offset-lg-3"> 
+                <a href="{% url 'homepage' %}"><button id="singlebutton" name="singlebutton" class="btn btn-secondary btn-md btn-block">Back to Main</button></a>
+            </div>
+        </div>
+    </div>
+        
+    {% endblock %} 

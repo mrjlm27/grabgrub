@@ -1,0 +1,56 @@
+{% extends 'Kiosk/home.html' %}
+{% load static %}
+
+
+    {% block content %}
+    <title>Grab Grub!</title>
+    <br>
+    <br>
+    <h2 class="text-center">View All Food</h2>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-12">
+
+                <table class="table table-striped">
+                    <thead>
+                        <th scope="col"> Name </th>
+                        <th scope="col"> Description </th>
+                        <th scope="col"> Price </th>
+                        <th scope="col"> Actions </th>
+                        <th>     </th>
+                    </thead>
+                    <tbody>
+                        {% for f in foods %}
+                        <tr>
+                            <td> {{ f.name }} </td>
+                            <td> {{ f.description }} </td>
+                            <td> {{ f.price }} </td>
+                            <td> <a href="{% url 'foodupdate' f.id %}"> Edit </a></td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+    <div class='container'>
+        <div class='row'>
+            <div class="col-lg-6 offset-lg-3"> 
+                <a href="{% url 'foodform' %}"><button id="singlebutton" name="singlebutton" class="btn btn-secondary btn-md btn-block">Add Food</button></a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class='container'>
+        <div class='row'>
+            <div class="col-lg-6 offset-lg-3"> 
+                <a href="{% url 'homepage' %}"><button id="singlebutton" name="singlebutton" class="btn btn-secondary btn-md btn-block">Back to Main</button></a>
+            </div>
+        </div>
+    </div>
+        
+    {% endblock %} 

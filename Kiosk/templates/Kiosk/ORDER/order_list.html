@@ -1,0 +1,60 @@
+{% extends 'Kiosk/home.html' %}
+{% load static %}
+
+
+    {% block content %}
+    <title>Grab Grub!</title>
+    <br>
+    <br>
+    <h2 class="text-center">View All Orders</h2>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-12">
+
+                <table class="table table-striped">
+                    <thead>
+                        <th scope="col"> Order Number </th>
+                        <th scope="col"> Ordered By </th>
+                        <th scope="col"> Total </th>
+                        <th scope="col"> Mode of Payment </th>
+                        <th>     </th>
+                    </thead>
+                    <tbody>
+                        {% for o in orderline_objects %}
+                        <tr>
+                            <td> {{ o.pk }} </td>
+                            <td> {{ o.ORD.cust_order.name }} </td>
+                            <td> {{ o.solver }} </td>
+                            <td> {{ o.ORD.mode_payment }}</td>
+                            <td> 
+                                <a href="{% url 'editordersform' pk=o.pk %}"> Edit </a>
+                                <a href="{% url 'deleteorder' pk=o.pk %}"> Delete </a>
+                            </td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+    <div class='container'>
+        <div class='row'>
+            <div class="col-lg-6 offset-lg-3"> 
+                <a href="{% url 'orderform' %}"><button id="singlebutton" name="singlebutton" class="btn btn-secondary btn-md btn-block">Add Order</button></a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class='container'>
+        <div class='row'>
+            <div class="col-lg-6 offset-lg-3"> 
+                <a href="{% url 'homepage' %}"><button id="singlebutton" name="singlebutton" class="btn btn-secondary btn-md btn-block">Back to Main</button></a>
+            </div>
+        </div>
+    </div>
+        
+    {% endblock %} 

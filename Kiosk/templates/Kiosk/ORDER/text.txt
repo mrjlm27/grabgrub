@@ -1,0 +1,28 @@
+def addordersform(request,id=0):
+    if request.method=="GET":
+        if id==0:
+            customer_objects = Customer.objects.all()
+            food_objects = Food.objects.all()
+            oform = OrderForm()
+            olform = OrderLineForm()
+        else:
+            customer_objects = Customer.objects.all()
+            food_objects = Food.objects.all()
+            order = Order.objects.get(pk=id)
+            orderline = OrderLine.objects.get(pk=id)
+            oform = OrderForm(instance=order)
+            olform = OrderLineForm(instance=orderline)
+        return render(request,'Kiosk/ORDER/addorder.html',{'olform':olform,'oform':oform, 'c':customer_objects, 'f':food_objects})
+    else:
+        if id==0:
+            oform = OrderForm(request.POST)
+            olform = OrderLineForm(request.POST)
+        else:
+            order = Order.objects.get(pk=id)
+            orderline = OrderLine.objects.get(pk=id)
+            oform = OrderForm(request.POST,instance=order)
+            olform = OrderLineForm(request.POST,instance=orderline)
+        if olform.is_valid():
+            oform.save()
+            olform.save()
+        return redirect('vieworders')

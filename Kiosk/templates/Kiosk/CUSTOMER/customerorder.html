@@ -1,0 +1,47 @@
+{% extends 'Kiosk/home.html' %}
+{% load static %}
+
+
+    {% block content %}
+    <title>Grab Grub!</title>
+    <br>
+    <br>
+    <div class="jumbotron">
+        <h1 class="display-4">View All Orders of {{ c_obj.name }}</h1>
+        <p>Total Order bill is: PHP {{ gtotal }}</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <th scope="col"> Order Number </th>
+                            <th scope="col"> Ordered By </th>
+                            <th scope="col"> Total </th>
+                            <th scope="col"> Ordered At </th>
+                            <th>     </th>
+                        </thead>
+                        <tbody>
+                            {% for c in customer %}
+                            <tr>
+                                <td> {{ c.pk }} </td>
+                                <td> {{ c.ORD.cust_order.name }} </td>
+                                <td> {{ c.solver }} </td>
+                                <td> {{ c.ORD.ordered_at}} </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+        <br>
+        <br>
+        <br>
+        <div class='container'>
+            <div class='row'>
+                <div class="col-lg-6 offset-lg-3"> 
+                    <a href="{% url 'homepage' %}"><button id="singlebutton" name="singlebutton" class="btn btn-secondary btn-md btn-block">Back to Main</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    {% endblock %} 

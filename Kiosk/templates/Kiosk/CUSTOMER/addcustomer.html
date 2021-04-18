@@ -1,0 +1,47 @@
+{% extends 'Kiosk/home.html' %}
+{% load static %}
+
+    {% block content %}
+    <form action='' method='post' autocomplete="off">
+        <div class="jumbotron">
+            <h1 class="display-4">Customer Entry / Update</h1>
+            <p class="lead">Add / Update a Customer.</p>
+            <hr class="my-4">
+            <p>Please complete the form below.</p>
+                <input type="hidden" name="csrfmiddlewaretoken" value="2WEgGovnMfrXY6vJLpY2tAGXsJigJXKVojYX2ryhXCET0bEaLhIr0MN7zhgFqyGD">    
+
+        <div id="div_id_name" class="form-group"> 
+            <label for="id_name" class=" requiredField">
+                Name<span class="asteriskField">*</span> 
+            </label> 
+            <div class=""> 
+                <input type="text" name="name" maxlength="300" class="textinput textInput form-control" required="" id="id_name"> 
+            </div> 
+        </div> 
+        <div id="div_id_address" class="form-group"> 
+            <label for="id_address" class=" requiredField">
+                Address<span class="asteriskField">*</span> 
+            </label> 
+            <div class=""> 
+                <input type="text" name="address" maxlength="300" class="textinput textInput form-control" required="" id="id_address"> 
+            </div> 
+        </div> 
+        <div id="div_id_city" class="form-group"> 
+            <label for="id_city" class=" requiredField">
+                City<span class="asteriskField">*</span> 
+            </label>
+             <div class=""> 
+                 <input type="text" name="city" maxlength="300" class="textinput textInput form-control" required="" id="id_city"> 
+                </div> 
+            </div>
+        
+                <button type='submit' class="btn btn-secondary btn-lg btn-block">Add / Edit Customer</button>
+                <br>
+                <br>
+                <a href="{% url 'homepage' %}"><button type="button" class="btn btn-secondary btn-lg btn-block">Back To Main</button></a>
+        </div>
+            </div>
+            {% csrf_token %}
+    </form>
+    {% endblock %}
+
